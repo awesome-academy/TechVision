@@ -1,12 +1,58 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "Tech Vision", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Help", help_path %></li>
-        <li><%= link_to "Log in", '#' %></li>
-      </ul>
-      </nav>
-  </div>
-</header>
+
+    <header id="header">
+      <!-- Nav -->
+      <div id="nav">
+        <!-- Main Nav -->
+        <div id="nav-fixed">
+          <div class="container">
+            <!-- logo -->
+            <div class="nav-logo">
+             <%= link_to image_tag("logo2.png", class: "logo", alt: "techvision.html"),"#"%>
+            </div>
+            <!-- /logo -->
+
+            <!-- nav -->
+            <ul class="nav-menu nav navbar-nav">
+              <li><a href="category.html">Apple</a></li>
+              <li><a href="category.html">SamSung</a></li>
+              <li class=""><a href="category.html">Sony</a></li>
+              <li class=""><a href="category.html">Xiaomi</a></li>
+              <li class=""><a href="category.html">Huawei</a></li>
+              <li class=""><a href="category.html">Nokia</a></li>
+            </ul>
+            <!-- /nav -->
+
+            <!-- search & aside toggle -->
+            <div class="nav-btns">
+              <button class="search-btn"><i class="fa fa-search"></i></button>
+              <button class="aside-btn"><i class="fa fa-bars"></i></button>
+              <div class="search-form">
+                <input class="search-input" type="text" name="search" placeholder="Enter Your Search ...">
+                <button class="search-close"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /search & aside toggle -->
+          </div>
+        </div>
+        <!-- /Main Nav -->
+
+        <!-- Aside Nav -->
+        <div id="nav-aside">
+          <!-- nav -->
+          <div class="section-row">
+            <ul class="nav-aside-menu">
+              <li class="nav-li"><a href="index.html">Home</a></li>
+              <li class="nav-li"><a href="about.html">About Us</a></li>
+              <li class="nav-li"><a href="#">Contacts</a></li>
+              <li class="nav-li"><a href="#">Login</a></li>
+
+            </ul>
+          </div>
+
+          <button class="nav-aside-close"><i class="fa fa-times"></i></button>
+          <!-- /aside nav close -->
+        </div>
+        <!-- Aside Nav -->
+      </div>
+      <!-- /Nav -->
+    </header>
