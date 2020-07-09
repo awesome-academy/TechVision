@@ -99,6 +99,8 @@ vi:
       Reported: "Đã báo xấu"
       reporter: "Người báo xấu"
       reason: "Lý do"
+      Sucessfully logged out!: "Đã đăng xuất"
+      allReview: "All Reviews"
 
   enums:
     review:

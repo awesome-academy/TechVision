@@ -1,8 +1,7 @@
 class Admin::ReportsController < Admin::BaseController
-  before_action :logged_in_user, only: [:create]
-
   def index
-  	@reports = Report.all
+  	@reports = Report.all.paginate(
+      page: params[:page], per_page: Settings.paginate)
     respond_to do |format|
       format.html
       format.csv { send_data @reports.to_csv, filename: "reports-#{Date.today}.csv" }

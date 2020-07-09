@@ -1,4 +1,4 @@
-<h3><%= t("index.revise") %></h3>
+<h3><%= t("index.allReviews") %></h3>
 <div class="container py-5 text-white">
   <div class="row">
     <div class="col-md-12 mx-auto">
@@ -9,9 +9,8 @@
               <thead>
                 <tr>
                   <th class="col-md-1" ><%= t("index.stt") %></th>
-                  <th class="col-md-2"><%= t("index.user") %></th>
-                  <th class="col-md-4"><%= t("index.Title") %></th>
-                  <th class="col-md-2"><%= t("index.Accept_add") %></th>
+                  <th class="col-md-3"><%= t("index.user") %></th>
+                  <th class="col-md-6"><%= t("index.Title") %></th>
                   <th class="col-md-1"><%= t("index.Delete") %></th>
                 </tr>
               </thead>
@@ -19,15 +18,10 @@
               <% @reviews.each_with_index do |review, index| %>
                 <div id =revise-<%= review.id %>>
                 <tr>
-                  <td><%= index+1%></td>
+                  <th><%= index+1%></th>
                   <td><%= link_to review.user.name, user_path(review.user) %></td>
                   <td><%= link_to review.title, review_path(review) %></td>
-                  <td><%= link_to edit_admin_revise_path(review),
-                    class: "btn btn-success btn-sm rounded-0", type: "button" do %>
-                      <i class="fa fa-edit"></i>
-                    <% end %>
-                  </td>
-                  <td><%= link_to admin_revise_path(review), method: :delete,
+                  <td><%= link_to admin_review_path(review), method: :delete,
                     data: { confirm: t("index.You sure?") },
                     class: "destroy-revise btn btn-danger btn-sm rounded-0",
                     type: "button" do %>
@@ -45,4 +39,4 @@
     </div>
   </div>
 </div>
-<%= will_paginate @reviews%>
+<%= will_paginate %>

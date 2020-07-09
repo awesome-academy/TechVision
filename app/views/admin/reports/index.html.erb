@@ -27,7 +27,7 @@
                   <td><%= link_to report.review.title, admin_report_path(report.review.id) %></td>
                   <td><%= report.reason%></td>
                   <td><%= link_to admin_report_path(report.review.id), method: :delete,
-                    data_delete: { confirm: "You sure?" },
+                    data: { confirm: t("index.You sure?") },
                     class: "btn btn-danger btn-sm rounded-0",
                     type: "button" do %>
                       <i class="fa fa-trash"></i>
@@ -44,3 +44,4 @@
     </div>
   </div>
 </div>
+<%= will_paginate %>

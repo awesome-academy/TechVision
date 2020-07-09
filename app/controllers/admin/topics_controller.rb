@@ -1,7 +1,7 @@
 class Admin::TopicsController < Admin::BaseController
   def index
     @topics = Topic.all.paginate(
-        :page => params[:page], per_page: 30)
+      page: params[:page], per_page: Settings.paginate)
     @topic = Topic.new
   end
 

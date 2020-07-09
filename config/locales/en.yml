@@ -80,7 +80,7 @@ en:
       Empty field!: "Empty field!"
       Title: "Title"
       Have: "Have"
-      reviews: "reviews"
+      reviews: "Reviews"
       All comment: "All comment"
       New Review: "New Review"
       posted: "Posted"
@@ -103,7 +103,7 @@ en:
       hashtager: "hashtag already exist"
       tagsInput: "Tags Input"
       Add: "Add"
-      revise: "Revise"
+      revise: "Revises"
       Report: "Report"
       Submit: "Submit"
       Cancel: "Cancel"
@@ -111,6 +111,8 @@ en:
       Reported: "Reported"
       reporter: "Reporter"
       reason: "Reason"
+      Sucessfully logged out!: "Sucessfully logged out!"
+      allReview: "All Reviews"
 
 
   enums:

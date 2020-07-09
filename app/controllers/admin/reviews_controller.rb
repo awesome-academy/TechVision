@@ -1,15 +1,16 @@
 class Admin::ReviewsController < Admin::BaseController
-  before_action :logged_in_user, only: [:create, :destroy, :edit]
-  before_action :correct_user, only: :destroy
+  before_action :admin_user, only: :destroy
 
   def index
-    @reviews = Review.all_review
+    @reviews = Review.all_review.paginate(
+      page: params[:page], per_page: Settings.paginate)
   end
 
   def show
     @review = Review.find params[:id]
     @bookmark = Bookmark.new
-    @comments = @review.comments.paginate(:page => params[:page], :per_page => 3)
+    @comments = @review.comments.paginate(
+      :page => params[:page], :per_page => Settings.comments)
     @comment = @review.comments.build
     @hashtags = @review.hashtags
     @reviewFilter = Review.reviewHashtag(params[:id])
@@ -51,10 +52,9 @@ class Admin::ReviewsController < Admin::BaseController
 
   def destroy
     @review = Review.find params[:id]
-    @user = User.find params[:id]
     @review.destroy
     flash[:success] = t("index.Review Deleted!")
-    redirect_to @user
+    redirect_to admin_reviews_path
   end
 
   private
@@ -66,5 +66,9 @@ class Admin::ReviewsController < Admin::BaseController
   def correct_user
     @review = current_user.reviews.find_by(id: params[:id])
     redirect_to root_url if @review.nil?
+  end
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
   end
 end

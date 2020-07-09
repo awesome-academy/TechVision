@@ -6,6 +6,9 @@
 		  <%= gravatar_for @user %>
 		  <%= @user.name %>
 	  </h1><br>
+    <h3>
+      <div>Email:<%= @user.email %></div>
+    </h3>
     <%= link_to t("index.New Review"), new_review_path, class: "btn btn-primary" %><br>
 	</section>
   </aside>
@@ -38,9 +41,9 @@
           </div>
           <div class="col-md-2">
             <% if review.appended_i18n == "Approved" %>
-            <span class="btn btn-success"><%= review.appended_i18n %></span>
+            <span class="label label-success"><%= review.appended_i18n %></span>
             <% else %>
-            <span class="btn btn-warning"><%= review.appended_i18n %></span>
+            <span class="label label-warning"><%= review.appended_i18n %></span>
             <% end %>
           </div>
           <div class="col-md-2">
