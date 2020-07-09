@@ -10,7 +10,8 @@ class HashtagsController < ApplicationController
 
   def show
     @hashtag = Hashtag.find params[:id]
-    @reviews = @hashtag.reviews.approval.paginate :page => params[:page], :per_page => Settings.paginate
+    @reviews = @hashtag.reviews.includes(:topic, :image_attachment).approval.paginate
+     :page => params[:page], :per_page => Settings.paginate
     @hashtagAll = Hashtag.all
   end
 end
