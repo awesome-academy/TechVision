@@ -36,7 +36,7 @@
                 <%= link_to image_tag(recentPost.image, class: "post-img"),review_path(recentPost) if recentPost.image.attached? %>
                 <div class="post-body">
                   <div class="post-meta">
-                    <%= link_to recentPost.name, "#", class: "post-category cat-#{ recentPost.topic.id }" %>
+                    <%= link_to recentPost.name, topic_path(recentPost.topic.id), class: "post-category cat-#{ recentPost.topic.id }" %>
                     <span class="post-date"><%= time_ago_in_words(recentPost.created_at) %> <%= t("index.ago") %></span>
                   </div>
                   <h3 class="post-title">
@@ -51,7 +51,7 @@
                 <%= link_to image_tag(recentPost.image, class: "post-img"),review_path(recentPost) if recentPost.image.attached? %>
                 <div class="post-body">
                   <div class="post-meta">
-                    <%= link_to recentPost.name, "#", class: "post-category cat-#{recentPost.topic.id}" %>
+                    <%= link_to recentPost.name, topic_path(recentPost.topic.id), class: "post-category cat-#{recentPost.topic.id}" %>
                     <span class="post-date"><%= time_ago_in_words(recentPost.created_at) %> <%= t("index.ago") %></span>
                   </div>
                   <h3 class="post-title">
@@ -73,7 +73,7 @@
                       <%= link_to image_tag(recentPost.image, class: "post-img"),review_path(recentPost) if recentPost.image.attached? %>
                       <div class="post-body">
                         <div class="post-meta">
-                          <%= link_to recentPost.name, "#", class: "post-category cat-#{recentPost.topic.id}" %>
+                          <%= link_to recentPost.name, topic_path(recentPost.topic.id), class: "post-category cat-#{recentPost.topic.id}" %>
                           <span class="post-date tt-review"><%= time_ago_in_words(recentPost.created_at) %><%= t("index.ago") %></span>
                         </div>
                         <h3 class="post-title tt-review">
@@ -104,6 +104,15 @@
                     <%= link_to reviewTop.title, review_path(reviewTop) %>
                   </h3>
                   <p><%= reviewTop.about %></p>
+                  <div class="aside-widget">
+                    <div class="tags-widget">
+                      <ul>
+                        <% reviewTop.hashtag_details.includes(:hashtag).each do |hashtag_detail| %>
+                          <li><%=link_to hashtag_detail.hashtag.name, hashtag_path(hashtag_detail) %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             <% end %>

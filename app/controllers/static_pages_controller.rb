@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    @review_new = Review.approval.hot
-    @recentPosts = Review.approval.reviewNew
+    @review_new = Review.includes(:topic, :image_attachment).approval.hot
+    @recentPosts = Review.includes(:topic, :image_attachment).approval.reviewNew
     @topicNumbers = Topic.all
     @reviewTops = Review.topLikes1.approval
     @hashtags = Hashtag.all
@@ -10,7 +10,7 @@ class StaticPagesController < ApplicationController
   def search
     @hashtagAll = Hashtag.all
     if params[:title]
-      @reviews = Review.searchReview(params[:title])
+      @reviews = Review.includes(:topic, :image_attachment).searchReview(params[:title])
       respond_to do |format|
         format.json {render json: @reviews}
       end
@@ -19,8 +19,8 @@ class StaticPagesController < ApplicationController
     else
       parameter = params[:search].downcase
       @parameter = params[:search].downcase
-      @reviews = Review.searchListReview(parameter).paginate(
-        :page => params[:page], :per_page => Settings.paginate)
+      @reviews = Review.includes(:topic, :image_attachment).searchListReview(parameter).paginate
+        :page => params[:page], :per_page => Settings.paginate
     end
   end
 end

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-    @reviews = @user.reviews.paginate(
+    @reviews = @user.reviews.includes(:topic, :image_attachment).paginate(
       page: params[:page], per_page: Settings.paginate)
   end
 

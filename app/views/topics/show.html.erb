@@ -22,6 +22,15 @@
                   <%= link_to review.title ,review_path(review) %>
                 </h3>
                 <p><%=review.about%></p>
+                <div class="aside-widget">
+                  <div class="tags-widget">
+                    <ul>
+                      <% review.hashtag_details.each do |hashtag_detail| %>
+                        <li><%=link_to hashtag_detail.hashtag.name, hashtag_path(hashtag_detail) %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

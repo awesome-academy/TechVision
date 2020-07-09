@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
       page: params[:page], per_page: Settings.comments)
     @comment = @review.comments.build
     @hashtags = @review.hashtags
-    @reviewFilter = Review.reviewHashtag params[:id]
+    @reviewFilter = Review.includes(:image_attachment).reviewHashtag params[:id]
     unless @review.appended
       redirect_to root_path
     end

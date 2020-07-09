@@ -30,7 +30,7 @@ class Review < ApplicationRecord
   idReviews = "select review_id from hashtag_details where hashtag_id in(#{idHashtags}) and review_id <> ?"
   scope :reviewHashtag, -> (id){Review.where("id in(#{idReviews})", id, id).limit(Settings.review_hashtag)}
   scope :all_appended_false, -> { where appended: false }
-
+  validates :title, presence: true, length:{ maximum: 500}
 	validates :user_id, presence: true
 	validates :content, presence: true, length: { maximum: Settings.review_length }
   validates :image, content_type: { in: %w[image/jpeg image/gif image/png image/jpg],
