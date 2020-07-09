@@ -54,6 +54,7 @@
             <li class="nav-li"><%= link_to t("index.New Review"), new_review_path %></li>
             <li class="nav-li"><%= link_to t("index.bookmark"), bookmarks_path %></li>
             <% if current_user.admin? %>
+            <li class="nav-li"><%= link_to t("index.allReview"), admin_reviews_path %></li>
             <li class="nav-li"><%= link_to t("index.revise"), admin_revises_path %></li>
             <li class="nav-li"><%= link_to t("index.Report"), admin_reports_path %></li>
             <li class="nav-li"><%= link_to t("index.topic"), admin_topics_path %></li>

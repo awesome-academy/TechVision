@@ -1,6 +1,7 @@
 class Admin::RevisesController < Admin::BaseController
   def index
-    @reviews = Review.all_appended_false
+    @reviews = Review.all_appended_false.paginate(
+      page: params[:page], per_page: Settings.paginate)
   end
 
   def show

@@ -1,5 +1,4 @@
 class Admin::BookmarksController < Admin::BaseController
-
   def index
     @bookmarks = Bookmark.all
     respond_to do |format|

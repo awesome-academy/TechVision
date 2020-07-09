@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
 
   def index
-    @users = User.paginate page: params[:page]
+    @users = User.paginate(page: params[:page], per_page: Settings.paginate)
     respond_to do |format|
       format.html
       format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
@@ -17,7 +17,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-    @reviews = @user.reviews.includes(:topic).paginate(page: params[:page], per_page: 10)
+    @reviews = @user.reviews.paginate(
+      page: params[:page], per_page: Settings.paginate)
   end
 
   def create
@@ -59,7 +60,7 @@ class UsersController < ApplicationController
   def logged_in_user
     unless logged_in?
       store_location
-      flash[:danger] = t("Please log in")
+      flash[:danger] = t("index.Please log in")
       redirect_to login_url
     end
   end

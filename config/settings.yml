@@ -1,1 +1,15 @@
-number: 6
+number_topic: 6
+comments: 5
+paginate: 10
+avatar : 80
+hashtag: 5
+hashtag_length: 140
+hot: 2
+review_hashtag: 5
+reviews: 11
+review_length: 5000
+review_hashtag: 5
+topic_length: 24
+user_name: 50
+user_email: 200
+user_password: 6

@@ -20,7 +20,7 @@ class StaticPagesController < ApplicationController
       parameter = params[:search].downcase
       @parameter = params[:search].downcase
       @reviews = Review.searchListReview(parameter).paginate(
-        :page => params[:page], :per_page => 10)
+        :page => params[:page], :per_page => Settings.paginate)
     end
   end
 end
