@@ -10,8 +10,6 @@ class CommentsController < ApplicationController
         format.js
         format.json {render json: {result: "OK"} }
       end
-      # flash[:success] = t("index.Created")
-      # redirect_to @comment.review
     end
   end
 
@@ -37,10 +35,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to @review if @comment.nil?
     flash[:success] = t("index.Comment deleted")
-    respond_to do |format|
-      format.html
-      format.js
-      format.json {render json: {result: "OK"} }
+    redirect_to review_path(params[:review_id])
     end
   end
 

@@ -22,7 +22,7 @@
               <% @reports.each_with_index do |report, index| %>
                 <div id =report-<%= report.id %>>
                 <tr>
-                  <th><%= index+1%></th>
+                  <td><%= index+1%></td>
                   <td><%= link_to report.user.name, user_path(report.user) %></td>
                   <td><%= link_to report.review.title, admin_report_path(report.review.id) %></td>
                   <td><%= report.reason%></td>

@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
       @bookmarked = Bookmark.bookmarked(@review.id, current_user.id).first
       @reported = Report.reported(@review.id, current_user.id).first
     end
-    @comments = @review.comments.paginate(page: params[:page], per_page: 5)
+    @comments = @review.comments.comment_time.paginate(page: params[:page], per_page: 5)
     @comment = @review.comments.build
     @hashtags = @review.hashtags
     @reviewFilter = Review.reviewHashtag params[:id]

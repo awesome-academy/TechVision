@@ -8,8 +8,8 @@
               <thead>
                 <tr>
                   <th class="col-md-1" ><%= t("index.stt") %></th>
-                  <th class="col-md-3"><%= t("index.user") %></th>
-                  <th class="col-md-6"><%= t("index.Title") %></th>
+                  <th class="col-md-2"><%= t("index.user") %></th>
+                  <th class="col-md-4"><%= t("index.Title") %></th>
                   <th class="col-md-2"><%= t("index.Accept_add") %></th>
                   <th class="col-md-1"><%= t("index.Delete") %></th>
                 </tr>
@@ -18,7 +18,7 @@
               <% @reviews.each_with_index do |review, index| %>
                 <div id =revise-<%= review.id %>>
                 <tr>
-                  <th><%= index+1%></th>
+                  <td><%= index+1%></td>
                   <td><%= link_to review.user.name, user_path(review.user) %></td>
                   <td><%= link_to review.title, review_path(review) %></td>
                   <td><%= link_to edit_admin_revise_path(review),

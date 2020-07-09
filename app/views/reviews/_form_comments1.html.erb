@@ -9,9 +9,11 @@
         <%= @review.comments.count == 1 ? t("index.comment") : t("index.comments") %>
       </div>
     <% end %>
+    <% if logged_in? %>
       <%= render "comments/text_comment_area" %>
+    <% end %>
     </div>
-  <div id="comments">
+  <div id="comments" class="col-md-12">
       <%= render @comments %>
   </div>
   <%= will_paginate @comments %>

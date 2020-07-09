@@ -1191,4 +1191,20 @@ border-bottom: 1px solid $gray-lighter;
     position: relative;
 
 }
+.margin-comment{
+    margin-top: 20px;
+}
+.border-comment{
+    border-bottom:solid 1px #a7b3c6;
+}
+.btndelete >a{
+    color: red;
+    margin-left: 10px;
+}
+.btnedit{
+    color: #eea236;
+}
 
+.comment-user-name >a{
+    color: blue;
+}

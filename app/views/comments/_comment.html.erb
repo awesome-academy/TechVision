@@ -1,16 +1,26 @@
-<div style = "margin : 20px">
-  <b><span><%= comment.user.name %>:</span></b>
+<div class="col-md-12 margin-comment">
+  <b><span class="comment-user-name"><%= link_to comment.user.name, user_path(comment.user_id) %>:</span></b>
   <span><%= comment.content %></span><br>
-  <% if logged_in? %>
+</div>
+<div class="col-md-12 border-comment">
+<div class="col-md-9">
+  <div class="row">
+  <div>
+    <span class="timestamp" >
+      <i><%= t("index.posted") %> <%= time_ago_in_words(comment.created_at) %>
+                                                      <%= t("index.ago") %></i>
+    </span>
+  </div>
+</div>
+</div>
+<div class="col-md-3">
+  <div class="row">
+      <% if logged_in? %>
     <% if comment.user_id == current_user.id %>
-      <i><%= link_to t("index.edit"), edit_review_comment_path(comment.review, comment) %></i>
-      <i><%= link_to t("index.Delete"), "javascript:void(0);",
-       data_delete: { confirm: "You sure?" }, data_comment: "#{comment.id}",
-       data_review: "#{comment.review.id}", class:"del_comment" %></i>
+      <i><%= link_to t("index.edit"), edit_review_comment_path(comment.review, comment),class: "btnedit" %></i>
+      <i class = "btndelete"><%= link_to t("index.Delete"), data_delete: { confirm: "You sure?" } %></i>
     <% end %>
   <% end %>
-  <span class="timestamp" >
-    <i><%= t("index.posted") %> <%= time_ago_in_words(comment.created_at) %>
-    <%= t("index.ago") %></i><hr>
-  </span>
+  </div>
+</div>
 </div>
