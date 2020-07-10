@@ -1,0 +1,2 @@
+module BulkProductsHelper
+end
