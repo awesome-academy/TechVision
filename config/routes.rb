@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'bulk_products/destroy'
   get 'sessions/new'
   scope "(:locale)", locale: /en|vi/ do
     mount Ckeditor::Engine => '/ckeditor'
@@ -31,6 +32,9 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :reports
       resources :revises
+      scope :reviews do
+        resource :bulk_review, only: [:destroy]
+      end
       resources :reviews
       resources :topics, only: [:create, :update, :destroy, :index]
       resources :bookmarks, only: :index
