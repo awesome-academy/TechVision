@@ -51,9 +51,10 @@ class Admin::ReviewsController < Admin::BaseController
   end
 
   def destroy
-    @review = Review.find params[:id]
-    @review.destroy
-    flash[:success] = t("index.Review Deleted!")
+    if params[:review_ids]
+      ids = params[:review_ids]
+      Review.deleteAll(ids).destroy_all
+    end
     redirect_to admin_reviews_path
   end
 

@@ -7,41 +7,72 @@
           <div class="table-responsive">
            <%= form_tag admin_bulk_review_path(review_ids: params[:review_ids]), method: :delete, data: {confirm: "Are you sure?"} do %>
             <table class="table m-0">
+              <%= form_tag admin_reviews_path(review_ids: params[:review_ids]), method: :delete,
+              data: {confirm: "you sure?"} do %>
               <thead>
                 <tr>
+                  <th class="col-md-2" ><%= check_box_tag false %><%= t("index.select") %></th>
                   <th class="col-md-1" ><%= t("index.stt") %></th>
                   <th class="col-md-3"><%= t("index.user") %></th>
                   <th class="col-md-5"><%= t("index.Title") %></th>
+<<<<<<< HEAD
                   <th class="col-md-1"> Chon </th>
                   <th class="col-md-1"><%= t("index.Delete") %></th>
+=======
+>>>>>>> deleteallReview
                 </tr>
               </thead>
               <tbody>
               <% @reviews.each_with_index do |review, index| %>
                 <div id =revise-<%= review.id %>>
                 <tr>
-                  <th><%= index+1%></th>
+                  <td><%= check_box_tag "review_ids[]", review.id, false %></td>
+                  <td><%= index+1%></td>
                   <td><%= link_to review.user.name, user_path(review.user) %></td>
                   <td><%= link_to review.title, review_path(review) %></td>
+<<<<<<< HEAD
                   <td><%= check_box_tag "review_ids[]", review.id , false %></td>
                   <td><%= link_to admin_review_path(review), method: :delete,
                     data: { confirm: t("index.You sure?") },
                     class: "destroy-revise btn btn-danger btn-sm rounded-0",
                     type: "button" do %>
                       <i class="fa fa-trash"></i>
+=======
+>>>>>>> deleteallReview
                     <% end %>
                   </td>
                 </tr>
                 </div>
-              <% end %>
               </tbody>
             </table>
+<<<<<<< HEAD
             <%= submit_tag 'Delete selected' %>
             <% end %>
+=======
+              <%= submit_tag t("index.delete_selected"), class: "btn btn-danger btn-xs" %>
+              <% end %>
+>>>>>>> deleteallReview
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<<<<<<< HEAD
 <%= will_paginate @reviews%>
+=======
+<%= will_paginate %>
+
+<script>
+$(document).ready(function() {
+  $('input[name="false"]').on("click", function() {
+    var a = $('input[name="false"]').prop('checked');
+    if(a){
+      $('input[name="review_ids[]"]').prop('checked', true);
+    }else{
+      $('input[name="review_ids[]"]').prop('checked', false);
+    }
+  });
+});
+</script>
+>>>>>>> deleteallReview

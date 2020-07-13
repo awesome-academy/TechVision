@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       resources :reviews
       resources :topics, only: [:create, :update, :destroy, :index]
       resources :bookmarks, only: :index
+      resource :reviews
     end
   end
 end
