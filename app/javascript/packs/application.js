@@ -17,6 +17,7 @@ import 'regenerator-runtime/runtime'
 // import 'js-autocomplete/auto-complete.css';
 // import autocomplete from 'js-autocomplete';
 //= require activestorage
+//= require select_all.js
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

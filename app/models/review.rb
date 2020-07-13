@@ -12,6 +12,7 @@ class Review < ApplicationRecord
   delegate :name, :to => :topic, :allow_nil => true
   accepts_nested_attributes_for :hashtag_details, allow_destroy: true
   enum appended: { waitting: false, approved: true }
+  scope :deleteAll, -> (ids){ where(id: ids) }
   scope :all_review, -> { order created_at: :desc }
   scope :approval, -> {where appended: true}
   scope :hot, -> {where(hot: true).order(created_at: :desc).limit(Settings.hot)}
